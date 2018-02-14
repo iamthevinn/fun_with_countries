@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './ui-toolkit/css/nm-cx/main.css'
 import './App.css';
 import HomeView from './HomeView'
+import BlocView from './BlocView'
 import {
   BrowserRouter as Router,
   Route,
@@ -16,7 +17,8 @@ class App extends Component {
       <Router>
         <div className="App">
           <Switch>
-            <Route exact to="/" component={HomeView} />
+            <Route exact path="/" component={HomeView} />
+            <Route path="/:bloc" render={ ({match}) => <BlocView match={match}/>}/>
           </Switch>
         </div>
       </Router>
