@@ -9,6 +9,7 @@
 
 .rightHome {
   height: 100vh;
+  overflow-y: auto;
 }
 
 .trackingLink {
@@ -19,4 +20,27 @@
 
 .blocViewHeader {
   text-align: center;
+}
+
+.countryCard {
+  margin-bottom: 5px;
+}
+
+.flag {
+  width: 33%;
+  height: 100%;
+  display: inline-block;
+}
+
+.countryDetails {
+  display: inline-block;
+  vertical-align: top;
+  padding-left: 5%;
+  width: 33%;
+}
+
+.countryTrackButton {
+  display: inline-block;
+  padding-left: 5%;
+  width: 33%;
 }

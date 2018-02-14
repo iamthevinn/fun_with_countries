@@ -4,6 +4,7 @@ import './App.css';
 import BlocList from './BlocList'
 import { connect } from 'react-redux'
 import { CHANGE_SELECTED_BLOCK, loadBlocDataToState } from './state/actions';
+import CountryCard from './CountryCard';
 
 
 class BlocView extends Component {
@@ -14,6 +15,7 @@ class BlocView extends Component {
   }
 
   render() {
+    console.log(this.props.blocData)
     return (
       <div>
         <div className="columns small-2 padding-medium leftNavPanel">
@@ -24,6 +26,9 @@ class BlocView extends Component {
           <div className="blocViewHeader">
             <h1>{this.props.selectedBloc}</h1>
           </div>
+          <div>
+            {this.props.blocData.map((country) => <CountryCard key={country.alpha3Code} country={country} />)}
+          </div>
         </div>
       </div>
     );
@@ -33,7 +38,8 @@ class BlocView extends Component {
 const mapStateToProps = state => {
 
   return {
-    selectedBloc: state.selectedBloc
+    selectedBloc: state.selectedBloc,
+    blocData: state.blocData
   };
 };
 
