@@ -44,3 +44,7 @@
   padding-left: 5%;
   width: 33%;
 }
+
+.inlineText {
+  display: inline-block;
+}

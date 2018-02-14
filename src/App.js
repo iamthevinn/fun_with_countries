@@ -18,7 +18,7 @@ class App extends Component {
         <div className="App">
           <Switch>
             <Route exact path="/" component={HomeView} />
-            <Route path="/:bloc" render={ ({match}) => <BlocView match={match}/>}/>
+            <Route path="/:bloc" render={ ({match, history}) => <BlocView match={match} history={history} />}/>
           </Switch>
         </div>
       </Router>

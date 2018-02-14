@@ -15,7 +15,6 @@ class BlocView extends Component {
   }
 
   render() {
-    console.log(this.props.blocData)
     return (
       <div>
         <div className="columns small-2 padding-medium leftNavPanel">
@@ -27,7 +26,7 @@ class BlocView extends Component {
             <h1>{this.props.selectedBloc}</h1>
           </div>
           <div>
-            {this.props.blocData.map((country) => <CountryCard key={country.alpha3Code} country={country} />)}
+            {this.props.blocData.map((country) => <CountryCard key={country.alpha3Code} history={this.props.history} match={this.props.match} country={country} />)}
           </div>
         </div>
       </div>
