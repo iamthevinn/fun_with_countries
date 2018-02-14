@@ -4,6 +4,7 @@ import './ui-toolkit/css/nm-cx/main.css'
 import './App.css';
 import BlocList from './BlocList'
 
+
 class HomeView extends Component {
   render() {
     return (
