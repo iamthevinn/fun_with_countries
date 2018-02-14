@@ -3,6 +3,7 @@ import axios from "axios"
 export const GET_COUNTRY_DATA = "GET_COUNTRY_DATA";
 export const CHANGE_SELECTED_BLOCK = "CHANGE_SELECTED_BLOCK";
 export const GET_BLOC_DATA = "GET_BLOC_DATA"
+export const CHANGE_SELECTED_COUNTRY = "CHANGE_SELECTED_COUNTRY"
 
 export function loadCountryDataToState() {
     return (dispatch, getState, api) => {

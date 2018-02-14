@@ -3,13 +3,14 @@ import './ui-toolkit/css/nm-cx/main.css'
 import './App.css';
 import BlocList from './BlocList'
 import { connect } from 'react-redux'
-import { CHANGE_SELECTED_BLOCK, loadBlocDataToState } from './state/actions';
+import { CHANGE_SELECTED_COUNTRY, CHANGE_SELECTED_BLOCK, loadBlocDataToState } from './state/actions';
 
 
 class CountryCard extends Component {
 
-  showCountry(countryName) {
-    this.props.history.push("/countries/" + countryName.toLowerCase())
+  showCountry(country) {
+    this.props.setSelectedCountry(country)
+    this.props.history.push("/countries/" + country.name.toLowerCase())
   }
 
   render() {
@@ -19,7 +20,7 @@ class CountryCard extends Component {
           <img src={this.props.country.flag} alt="flag" />
         </div>
         <div className="countryDetails">
-          <div className="inlineText">Country Name:&nbsp;</div><div onClick={() => this.showCountry(this.props.country.name)} className="inlineText">{this.props.country.name}</div>
+          <div className="inlineText">Country Name:&nbsp;</div><div onClick={() => this.showCountry(this.props.country)} className="inlineText">{this.props.country.name}</div>
           <div>Capital: {this.props.country.capital}</div>
           <div>Population: {this.props.country.population}</div>
         </div>
@@ -31,4 +32,10 @@ class CountryCard extends Component {
   }
 }
 
-export default CountryCard;
+const mapDispatchToProps = dispatch => {
+  return {
+    setSelectedCountry: (country) => dispatch({ type: CHANGE_SELECTED_COUNTRY, payload: country })
+  }
+};
+
+export default connect(null, mapDispatchToProps)(CountryCard);
