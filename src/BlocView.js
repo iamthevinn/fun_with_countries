@@ -21,7 +21,9 @@ class BlocView extends Component {
         </div>
         <div className="columns small-10 padding-medium rightHome">
           <div className="trackingLink">Tracking</div>
-          <div>{this.props.selectedBloc}</div>
+          <div className="blocViewHeader">
+            <h1>{this.props.selectedBloc}</h1>
+          </div>
         </div>
       </div>
     );
@@ -43,5 +45,5 @@ const mapDispatchToProps = dispatch => {
 };
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(BlocView);
+export default connect(mapStateToProps, mapDispatchToProps)(BlocView);
 
