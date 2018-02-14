@@ -3,7 +3,7 @@ import './ui-toolkit/css/nm-cx/main.css'
 import './App.css';
 import BlocList from './BlocList'
 import { connect } from 'react-redux'
-import { CHANGE_SELECTED_COUNTRY, CHANGE_SELECTED_BLOCK, loadBlocDataToState } from './state/actions';
+import { CHANGE_SELECTED_COUNTRY, CHANGE_SELECTED_BLOCK, loadBlocDataToState, addCountryToTrack } from './state/actions';
 
 
 class CountryCard extends Component {
@@ -11,6 +11,14 @@ class CountryCard extends Component {
   showCountry(country) {
     this.props.setSelectedCountry(country)
     this.props.history.push("/countries/" + country.name.toLowerCase())
+  }
+
+  toggleIsTracked(countryName, tracked) {
+    if(tracked)
+      //untrack
+      console.log("untrack")
+    else
+      this.props.trackCountry(countryName)
   }
 
   render() {
@@ -25,7 +33,7 @@ class CountryCard extends Component {
           <div>Population: {this.props.country.population}</div>
         </div>
         <div className="countryTrackButton">
-          <button className={this.props.isTracked ? "alert" : "success"} style={{ width: '100%' }}>{this.props.isTracked ? "Tracked" : "Track"}</button>
+          <button onClick={() => this.toggleIsTracked(this.props.country.name, this.props.isTracked)} className={this.props.isTracked ? "alert" : "success"} style={{ width: '100%' }}>{this.props.isTracked ? "Tracked" : "Track"}</button>
         </div>
       </div>
     );
@@ -34,7 +42,8 @@ class CountryCard extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setSelectedCountry: (country) => dispatch({ type: CHANGE_SELECTED_COUNTRY, payload: country })
+    setSelectedCountry: (country) => dispatch({ type: CHANGE_SELECTED_COUNTRY, payload: country }),
+    trackCountry: (countryName) => dispatch(addCountryToTrack({countryName: countryName}))
   }
 };
 
