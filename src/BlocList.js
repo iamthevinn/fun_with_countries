@@ -22,19 +22,6 @@ const NMBloc = (props) => {
   )
 }
 
-const NmTab = (props) => {
-  return (
-    
-    <Route exact={props.exact} path={props.to} children={({match}) => {
-      return (
-        <li className={`tab-title ${match ? 'active' : ''}`} >
-          <Link to={props.to}>{props.tabName}</Link>
-        </li>
-      )}
-    } />
-  )
-}
-
 class BlocList extends Component {
   render() {
     return (
