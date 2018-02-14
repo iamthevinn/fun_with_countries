@@ -1,18 +1,25 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import './ui-toolkit/css/nm-cx/main.css'
 import './App.css';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div class="columns small-2 padding-medium leftNavPanel">
+          <ul class="filter-nav vertical">
+            <li class="filter-nav-entry"><button>EU</button></li>
+            <li class="filter-nav-entry"><button>EFTA</button></li>
+            <li class="filter-nav-entry"><button>CARICOM</button></li>
+            <li class="filter-nav-entry"><button>PA</button></li>
+          </ul>
+        </div>
+        <div class="columns small-10 padding-medium rightHome">
+          <div className="trackingLink">
+            Tracking
+          </div>
+        </div>
       </div>
     );
   }
