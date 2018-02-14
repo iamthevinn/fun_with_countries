@@ -10,7 +10,6 @@ import {
 } from 'react-router-dom'
 
 const NMBloc = (props) => {
-
   return (
     <Route exact={props.exact} path={props.to} children={({match}) => {
       return (
