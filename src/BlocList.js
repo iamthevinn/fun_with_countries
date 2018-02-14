@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './ui-toolkit/css/nm-cx/main.css'
 import './App.css';
 import {
-  BrowserRouter as Router,
   Route,
   Link,
-  Switch
 } from 'react-router-dom'
 
 const NMBloc = (props) => {
@@ -24,7 +21,7 @@ const NMBloc = (props) => {
 class BlocList extends Component {
   render() {
     return (
-        <ul class="tabs vertical">
+        <ul className="tabs vertical">
           <NMBloc exact={true} to={"/EU"} tabName="EU"/>
           <NMBloc exact={true} to={"/EFTA"} tabName="EFTA"/>
           <NMBloc exact={true} to={"/CARICOM"} tabName="CARICOM"/>

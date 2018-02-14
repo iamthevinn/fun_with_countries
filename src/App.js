@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './ui-toolkit/css/nm-cx/main.css'
 import './App.css';
 import HomeView from './HomeView'
