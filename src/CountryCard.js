@@ -3,7 +3,7 @@ import './ui-toolkit/css/nm-cx/main.css'
 import './App.css';
 import BlocList from './BlocList'
 import { connect } from 'react-redux'
-import { CHANGE_SELECTED_COUNTRY, CHANGE_SELECTED_BLOCK, loadBlocDataToState, addCountryToTrack } from './state/actions';
+import { CHANGE_SELECTED_COUNTRY, CHANGE_SELECTED_BLOCK, loadBlocDataToState, addCountryToTrack, untrackCountry} from './state/actions';
 
 
 class CountryCard extends Component {
@@ -13,10 +13,9 @@ class CountryCard extends Component {
     this.props.history.push("/countries/" + country.name.toLowerCase())
   }
 
-  toggleIsTracked(countryName, tracked) {
-    if(tracked)
-      //untrack
-      console.log("untrack")
+  toggleIsTracked(countryName, trackedCountry) {
+    if(trackedCountry)
+      this.props.untrackCountry(trackedCountry.id)
     else
       this.props.trackCountry(countryName)
   }
@@ -33,7 +32,7 @@ class CountryCard extends Component {
           <div>Population: {this.props.country.population}</div>
         </div>
         <div className="countryTrackButton">
-          <button onClick={() => this.toggleIsTracked(this.props.country.name, this.props.isTracked)} className={this.props.isTracked ? "alert" : "success"} style={{ width: '100%' }}>{this.props.isTracked ? "Tracked" : "Track"}</button>
+          <button onClick={() => this.toggleIsTracked(this.props.country.name, this.props.trackedCountry)} className={this.props.trackedCountry ? "alert" : "success"} style={{ width: '100%' }}>{this.props.trackedCountry ? "Tracked" : "Track"}</button>
         </div>
       </div>
     );
@@ -43,7 +42,8 @@ class CountryCard extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     setSelectedCountry: (country) => dispatch({ type: CHANGE_SELECTED_COUNTRY, payload: country }),
-    trackCountry: (countryName) => dispatch(addCountryToTrack({countryName: countryName}))
+    trackCountry: (countryName) => dispatch(addCountryToTrack({countryName: countryName})),
+    untrackCountry: (countryId) => dispatch(untrackCountry(countryId))
   }
 };
 

@@ -27,7 +27,6 @@ export function loadBlocDataToState(id) {
 }
 
 export function loadTrackedCountriesToState() {
-  console.log("updating tracked countries")
   return (dispatch, getState, api) => {
     const promise = axios.get('http://5a8499bd3015220012486c1d.mockapi.io/countries');
 
@@ -38,9 +37,18 @@ export function loadTrackedCountriesToState() {
 }
 
 export function addCountryToTrack(countryObj) {
-  console.log("in add country")
   return (dispatch, getState, api) => {
     const promise = axios.post('http://5a8499bd3015220012486c1d.mockapi.io/countries', countryObj);
+
+    promise.then(({ data: trackedCountries }) => {
+      dispatch(loadTrackedCountriesToState())
+    }, () => { })
+  }
+}
+
+export function untrackCountry(countryId) {
+  return (dispatch, getState, api) => {
+    const promise = axios.delete('http://5a8499bd3015220012486c1d.mockapi.io/countries/' + countryId);
 
     promise.then(({ data: trackedCountries }) => {
       dispatch(loadTrackedCountriesToState())

@@ -26,7 +26,7 @@ class BlocView extends Component {
             <h1>{this.props.selectedBloc}</h1>
           </div>
           <div>
-            {this.props.blocData.map((country) => <CountryCard key={country.alpha3Code} history={this.props.history} match={this.props.match} isTracked={this.props.trackedCountries.find((trackedCountry) => trackedCountry.countryName === country.name)} country={country} />)}
+            {this.props.blocData.map((country) => <CountryCard key={country.alpha3Code} history={this.props.history} match={this.props.match} trackedCountry={this.props.trackedCountries.find((trackedCountry) => trackedCountry.countryName === country.name)} country={country} />)}
           </div>
         </div>
       </div>
