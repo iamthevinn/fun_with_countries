@@ -4,6 +4,7 @@ import './App.css';
 import HomeView from './HomeView'
 import BlocView from './BlocView'
 import CountryView from './CountryView'
+import TrackedView from './TrackedView'
 import {
   BrowserRouter as Router,
   Route,
@@ -21,6 +22,7 @@ class App extends Component {
             <Route exact path="/" component={HomeView} />
             <Route exact path="/:bloc" render={ ({match, history}) => <BlocView match={match} history={history} />}/>
             <Route path="/countries/:countryName" render={ ({match, history}) => <CountryView match={match} history={history} />}/>
+            <Route path="/tracking/countries" render={ ({match, history}) => <TrackedView match={match} history={history} />}/>
           </Switch>
         </div>
       </Router>
