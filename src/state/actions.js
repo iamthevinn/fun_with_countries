@@ -18,7 +18,6 @@ export function loadBlocDataToState(id) {
     return (dispatch, getState, api) => {
         const promise = axios.get(api + "regionalbloc/" + id);
 
-        console.log("in bloc")
         promise.then(({ data: blocData }) => {
             dispatch({ type: GET_BLOC_DATA, payload: blocData })
         }, () => { })

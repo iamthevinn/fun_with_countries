@@ -6,15 +6,20 @@ import {
   Link,
 } from 'react-router-dom'
 import { connect } from "react-redux";
-import { loadCountryDataToState, CHANGE_SELECTED_BLOCK } from './state/actions'
+import { loadCountryDataToState, loadBlocDataToState, CHANGE_SELECTED_BLOCK } from './state/actions'
 
 const NMBloc = (props) => {
+
+  function changeTheBloc(tabName) {
+    props.changeSelectedBloc(tabName)
+    props.setBlocData(tabName)
+  }
 
   return (
     <Route exact={props.exact} path={props.to} children={({ match }) => {
       return (
         <li className={`tab-title ${match ? 'active' : ''}`} >
-          <Link onClick={() => props.changeSelectedBloc(props.tabName)} to={props.to}>{props.tabName}</Link>
+          <Link onClick={() => changeTheBloc(props.tabName)} to={props.to}>{props.tabName}</Link>
         </li>
       )
     }
@@ -28,11 +33,12 @@ class BlocList extends Component {
   componentDidMount() {
     this.props.loadCountryDataToState()
   }
+  
 
   render() {
     return (
       <ul className="tabs vertical">
-        {this.props.blocs.map((bloc) => <NMBloc changeSelectedBloc={this.props.changeSelectedBloc} key={bloc} exact={true} to={"/" + bloc.toLowerCase()} tabName={bloc} />)}
+        {this.props.blocs.map((bloc) => <NMBloc setBlocData={this.props.setBlocData} changeSelectedBloc={this.props.changeSelectedBloc} key={bloc} exact={true} to={"/" + bloc.toLowerCase()} tabName={bloc} />)}
       </ul>
     );
   }
@@ -61,7 +67,8 @@ const mapDispatchToProps = dispatch => {
     loadCountryDataToState: () => dispatch(
       loadCountryDataToState()
     ),
-    changeSelectedBloc: (blocName) => dispatch({ type: CHANGE_SELECTED_BLOCK, payload: blocName })
+    changeSelectedBloc: (blocName) => dispatch({ type: CHANGE_SELECTED_BLOCK, payload: blocName }),
+    setBlocData: (blocName) => dispatch(loadBlocDataToState(blocName))
   }
 };
 
