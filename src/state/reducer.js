@@ -1,4 +1,4 @@
-import { GET_COUNTRY_DATA, CHANGE_SELECTED_BLOCK, GET_BLOC_DATA, CHANGE_SELECTED_COUNTRY } from './actions';
+import { GET_COUNTRY_DATA, CHANGE_SELECTED_BLOCK, GET_BLOC_DATA, CHANGE_SELECTED_COUNTRY, UPDATE_TRACKED_COUNTRIES } from './actions';
 
 const initialState = {
     countryData: [],
@@ -18,6 +18,8 @@ function reducer(state = initialState, action) {
             return { ...state, blocData: action.payload }
         case CHANGE_SELECTED_COUNTRY:
             return { ...state, selectedCountry: action.payload }
+        case UPDATE_TRACKED_COUNTRIES:
+            return { ...state, trackedCountries: action.payload}
 
         default:
             return state;

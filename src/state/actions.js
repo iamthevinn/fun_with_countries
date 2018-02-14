@@ -4,6 +4,7 @@ export const GET_COUNTRY_DATA = "GET_COUNTRY_DATA";
 export const CHANGE_SELECTED_BLOCK = "CHANGE_SELECTED_BLOCK";
 export const GET_BLOC_DATA = "GET_BLOC_DATA"
 export const CHANGE_SELECTED_COUNTRY = "CHANGE_SELECTED_COUNTRY"
+export const UPDATE_TRACKED_COUNTRIES = "UPDATE_TRACKED_COUNTRIES"
 
 export function loadCountryDataToState() {
     return (dispatch, getState, api) => {
@@ -21,6 +22,16 @@ export function loadBlocDataToState(id) {
 
         promise.then(({ data: blocData }) => {
             dispatch({ type: GET_BLOC_DATA, payload: blocData })
+        }, () => { })
+    }
+}
+
+export function loadTrackedCountriesToState() {
+    return (dispatch, getState, api) => {
+        const promise = axios.get('http://5a8499bd3015220012486c1d.mockapi.io/');
+
+        promise.then(({ data: trackedCountries }) => {
+            dispatch({ type: UPDATE_TRACKED_COUNTRIES, payload: trackedCountries })
         }, () => { })
     }
 }

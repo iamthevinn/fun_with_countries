@@ -25,7 +25,7 @@ class CountryCard extends Component {
           <div>Population: {this.props.country.population}</div>
         </div>
         <div className="countryTrackButton">
-          {this.props.isTracked ? <button className="alert" style={{ width: '100%' }}>Tracked</button> : <button className="success" style={{ width: '100%' }}>Track</button>}
+          <button className={this.props.isTracked ? "alert" : "success"} style={{ width: '100%' }}>{this.props.isTracked ? "Tracked" : "Track"}</button>
         </div>
       </div>
     );
