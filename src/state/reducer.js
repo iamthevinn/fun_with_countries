@@ -4,7 +4,8 @@ const initialState = {
     countryData: [],
     selectedBloc: undefined,
     blocData: [],
-    selectedCountry: undefined
+    selectedCountry: undefined,
+    trackedCountries: []
 };
 
 function reducer(state = initialState, action) {
