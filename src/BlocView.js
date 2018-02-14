@@ -3,13 +3,14 @@ import './ui-toolkit/css/nm-cx/main.css'
 import './App.css';
 import BlocList from './BlocList'
 import { connect } from 'react-redux'
-import { CHANGE_SELECTED_BLOCK } from './state/actions';
+import { CHANGE_SELECTED_BLOCK, loadBlocDataToState } from './state/actions';
 
 
 class BlocView extends Component {
 
   componentDidMount() {
     this.props.setSelectedBloc(this.props.match.params.bloc.toUpperCase())
+    this.props.setBlocData(this.props.match.params.bloc)
   }
 
   render() {
@@ -36,7 +37,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setSelectedBloc: (blocName) => dispatch({ type: CHANGE_SELECTED_BLOCK, payload: blocName })
+    setSelectedBloc: (blocName) => dispatch({ type: CHANGE_SELECTED_BLOCK, payload: blocName }),
+    setBlocData: (blocName) => dispatch(loadBlocDataToState(blocName))
   }
 };
 
