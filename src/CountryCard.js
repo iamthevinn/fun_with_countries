@@ -31,7 +31,7 @@ class CountryCard extends Component {
           <div>Population: {this.props.country.population}</div>
         </div>
         <div className="countryTrackButton">
-          <button onClick={() => this.toggleIsTracked(this.props.country.name, this.props.trackedCountry)} className={this.props.trackedCountry ? "alert" : "success"} style={{ width: '100%' }}>{this.props.trackedCountry ? "Tracked" : "Track"}</button>
+          <button disabled={this.props.onBloc && this.props.trackedCountry} onClick={() => this.toggleIsTracked(this.props.country.name, this.props.trackedCountry)} className={this.props.trackedCountry ? this.props.onBloc ? "warning" : "alert" : "success"} style={{ width: '100%' }}>{this.props.trackedCountry ? "Tracked" : "Track"}</button>
         </div>
       </div>
     );
