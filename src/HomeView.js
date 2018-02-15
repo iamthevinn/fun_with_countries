@@ -14,7 +14,7 @@ class HomeView extends Component {
           <BlocList />
         </div>
         <div className="columns small-10 padding-medium rightHome">
-          <Link to={"/tracking/countries"} className="trackingLink">Tracking</Link>
+          <Link to={"/tracking/countries"} style={{ float: 'right', paddingRight: '20%', fontSize: '24px'}} >Tracking</Link>
         </div>
       </div>
     );

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import './ui-toolkit/css/nm-cx/main.css'
 import './App.css';
-import BlocList from './BlocList'
 import { connect } from 'react-redux'
-import { CHANGE_SELECTED_COUNTRY, CHANGE_SELECTED_BLOCK, loadBlocDataToState, addCountryToTrack, untrackCountry} from './state/actions';
+import { CHANGE_SELECTED_COUNTRY, addCountryToTrack, untrackCountry} from './state/actions';
 
 
 class CountryCard extends Component {

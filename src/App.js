@@ -8,7 +8,6 @@ import TrackedView from './TrackedView'
 import {
   BrowserRouter as Router,
   Route,
-  Link,
   Switch
 } from 'react-router-dom'
 

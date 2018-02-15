@@ -12,12 +12,6 @@
   overflow-y: auto;
 }
 
-.trackingLink {
-  padding-right: 20%;
-  font-size: 24px;
-  text-align: right;
-}
-
 .blocViewHeader {
   text-align: center;
 }
@@ -30,6 +24,7 @@
   width: 33%;
   height: 100%;
   display: inline-block;
+  border: 1px solid #eeeeeec2;
 }
 
 .countryDetails {

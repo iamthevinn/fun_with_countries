@@ -3,7 +3,7 @@ import './ui-toolkit/css/nm-cx/main.css'
 import './App.css';
 import BlocList from './BlocList'
 import { connect } from 'react-redux'
-import { CHANGE_SELECTED_BLOCK, loadBlocDataToState } from './state/actions';
+import { CHANGE_SELECTED_BLOCK, loadBlocDataToState, loadTrackedCountriesToState } from './state/actions';
 import CountryCard from './CountryCard';
 import {
   Link,
@@ -14,6 +14,8 @@ class BlocView extends Component {
   componentDidMount() {
     this.props.setSelectedBloc(this.props.match.params.bloc.toUpperCase())
     this.props.setBlocData(this.props.match.params.bloc)
+    this.props.loadTracked();
+
   }
 
   render() {
@@ -23,7 +25,7 @@ class BlocView extends Component {
           <BlocList />
         </div>
         <div className="columns small-10 padding-medium rightHome">
-          <Link to={"/tracking/countries"} className="trackingLink">Tracking</Link>
+          <Link to={"/tracking/countries"} style={{ float: 'right', paddingRight: '20%', fontSize: '24px'}}>Tracking</Link>
           <div className="blocViewHeader">
             <h1>{this.props.selectedBloc}</h1>
           </div>
@@ -47,6 +49,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    loadTracked: (blocName) => dispatch(loadTrackedCountriesToState()),
     setSelectedBloc: (blocName) => dispatch({ type: CHANGE_SELECTED_BLOCK, payload: blocName }),
     setBlocData: (blocName) => dispatch(loadBlocDataToState(blocName))
   }

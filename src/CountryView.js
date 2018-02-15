@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './ui-toolkit/css/nm-cx/main.css'
 import './App.css';
-import BlocList from './BlocList'
 import { connect } from 'react-redux'
-import { CHANGE_SELECTED_BLOCK, loadCountryDataToState } from './state/actions';
-import CountryCard from './CountryCard';
+import { loadCountryDataToState } from './state/actions';
 import NavList from './NavList'
 
 class CountryView extends Component {
