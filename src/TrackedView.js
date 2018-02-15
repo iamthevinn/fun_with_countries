@@ -24,8 +24,9 @@ class TrackedView extends Component {
           <div>
             {this.props.trackedCountries.map((trackedCountry) => {
               const country = this.props.countryData.find((country) => country.name === trackedCountry.countryName)
+              
               return (
-                <CountryCard key={country.alpha3Code} history={this.props.history} match={this.props.match} trackedCountry={this.props.trackedCountries.find((trackedCountry) => trackedCountry.countryName === country.name)} country={country} />
+                country && <CountryCard key={country.alpha3Code} history={this.props.history} match={this.props.match} trackedCountry={this.props.trackedCountries.find((trackedCountry) => trackedCountry.countryName === country.name)} country={country} />
             )})}
           </div>
         </div>

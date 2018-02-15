@@ -6,12 +6,16 @@ export const GET_BLOC_DATA = "GET_BLOC_DATA"
 export const CHANGE_SELECTED_COUNTRY = "CHANGE_SELECTED_COUNTRY"
 export const UPDATE_TRACKED_COUNTRIES = "UPDATE_TRACKED_COUNTRIES"
 
-export function loadCountryDataToState() {
+export function loadCountryDataToState(countryName) {
   return (dispatch, getState, api) => {
     const promise = axios.get(api);
 
     promise.then(({ data: countryData }) => {
       dispatch({ type: GET_COUNTRY_DATA, payload: countryData })
+      if (countryName) {
+        const country = countryData.find((country) => country.name.toLowerCase() === countryName)
+        dispatch({type: CHANGE_SELECTED_COUNTRY, payload: country})
+      }
     }, () => { })
   }
 }

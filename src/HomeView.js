@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import './ui-toolkit/css/nm-cx/main.css'
 import './App.css';
 import BlocList from './BlocList'
-
+import {
+  Link,
+} from 'react-router-dom'
 
 class HomeView extends Component {
   render() {
@@ -12,7 +14,7 @@ class HomeView extends Component {
           <BlocList />
         </div>
         <div className="columns small-10 padding-medium rightHome">
-          <div className="trackingLink">Tracking</div>
+          <Link to={"/tracking/countries"} className="trackingLink">Tracking</Link>
         </div>
       </div>
     );

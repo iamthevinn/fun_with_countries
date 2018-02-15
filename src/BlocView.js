@@ -5,7 +5,9 @@ import BlocList from './BlocList'
 import { connect } from 'react-redux'
 import { CHANGE_SELECTED_BLOCK, loadBlocDataToState } from './state/actions';
 import CountryCard from './CountryCard';
-
+import {
+  Link,
+} from 'react-router-dom'
 
 class BlocView extends Component {
 
@@ -21,7 +23,7 @@ class BlocView extends Component {
           <BlocList />
         </div>
         <div className="columns small-10 padding-medium rightHome">
-          <div className="trackingLink">Tracking</div>
+          <Link to={"/tracking/countries"} className="trackingLink">Tracking</Link>
           <div className="blocViewHeader">
             <h1>{this.props.selectedBloc}</h1>
           </div>
